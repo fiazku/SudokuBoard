@@ -12,19 +12,39 @@ class ViewController: UIViewController {
 
     var board: Board!
     var vflIndex: [String: UIView]!
+    var statusBarSpacing: CGFloat!
+    var boardWidth: CGFloat!
+    var boardConstraints: [[NSLayoutConstraint]]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        boardConstraints = [[NSLayoutConstraint]]()
+
         vflIndex = [String: UIView]()
 
         board = Board()
-        self.view.addSubview(board)
+        view.addSubview(board)
         vflIndex["board"] = board
     }
 
     override func viewDidLayoutSubviews() {
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[board(\(self.view.frame.width))]", options: [], metrics: nil, views: vflIndex))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-20-[board(\(self.view.frame.width))]", options: [], metrics: nil, views: vflIndex))
+        for c in boardConstraints {
+            view.removeConstraints(c)
+        }
+        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+            statusBarSpacing = 0
+            boardWidth = view.frame.height
+        } else {
+            statusBarSpacing = UIApplication.sharedApplication().statusBarFrame.height
+            boardWidth = view.frame.width
+        }
+
+        let hConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
+        let vConstraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-\(statusBarSpacing)-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
+        boardConstraints.append(hConstraint)
+        boardConstraints.append(vConstraint)
+        view.addConstraints(hConstraint)
+        view.addConstraints(vConstraint)
     }
     
 }
