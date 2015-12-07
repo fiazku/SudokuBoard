@@ -10,8 +10,8 @@ import UIKit
 
 class Tile: UILabel {
 
-    let TILE_PADDING = 0.5
-    let FULL_SELECTED = "1 2 3\n4 5 6\n7 8 9"
+    let tilePadding = 0.5
+    let fullSelected = "1 2 3\n4 5 6\n7 8 9"
 
     var selected: Int = 1
 
@@ -36,7 +36,7 @@ class Tile: UILabel {
 
     func updateLabel(recognizer: UITapGestureRecognizer) {
         if selected > 9 {
-            text = FULL_SELECTED
+            text = fullSelected
             font = UIFont(name: "Menlo-Regular", size: 9.0)
             selected = 0
         } else {
