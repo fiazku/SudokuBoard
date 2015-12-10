@@ -10,7 +10,6 @@ import UIKit
 
 class Tile: UILabel {
 
-    let tilePadding = 0.5
     let fullSelected = "1 2 3\n4 5 6\n7 8 9"
 
     var selected: Int = 1
