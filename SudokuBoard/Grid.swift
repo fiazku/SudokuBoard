@@ -22,7 +22,6 @@ class Grid: UIView {
 
         for i in 1...9 {
             let tile = Tile(frame: self.frame)
-            tile.translatesAutoresizingMaskIntoConstraints = false
             vflIndex["tile\(i)"] = tile
             addSubview(tile)
         }
