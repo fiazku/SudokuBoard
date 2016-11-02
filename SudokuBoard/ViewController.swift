@@ -32,16 +32,16 @@ class ViewController: UIViewController {
             view.removeConstraints(c)
         }
         
-        if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
             statusBarSpacing = 0
             boardWidth = view.frame.height
         } else {
-            statusBarSpacing = UIApplication.sharedApplication().statusBarFrame.height
+            statusBarSpacing = UIApplication.shared.statusBarFrame.height
             boardWidth = view.frame.width
         }
 
-        let hConstraint = NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
-        let vConstraint = NSLayoutConstraint.constraintsWithVisualFormat("V:|-\(statusBarSpacing)-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
+        let hConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
+        let vConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(statusBarSpacing)-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
 
         boardConstraints.append(hConstraint)
         boardConstraints.append(vConstraint)

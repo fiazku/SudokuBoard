@@ -18,22 +18,22 @@ class Tile: UILabel {
         super.init(frame: frame)
 
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = UIColor.grayColor()
-        textColor = UIColor.whiteColor()
-        textAlignment = NSTextAlignment.Center
+        backgroundColor = UIColor.gray
+        textColor = UIColor.white
+        textAlignment = NSTextAlignment.center
         font = UIFont(name: "Menlo-Regular", size: 9.0)
         numberOfLines = 0
-        lineBreakMode = NSLineBreakMode.ByWordWrapping
-        userInteractionEnabled = true
+        lineBreakMode = NSLineBreakMode.byWordWrapping
+        isUserInteractionEnabled = true
 
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: "updateLabel:"))
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(Tile.updateLabel(_:))))
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
-    func updateLabel(recognizer: UITapGestureRecognizer) {
+    func updateLabel(_ recognizer: UITapGestureRecognizer) {
         if selected > 9 {
             text = fullSelected
             font = UIFont(name: "Menlo-Regular", size: 9.0)
@@ -43,7 +43,7 @@ class Tile: UILabel {
             font = UIFont(name: "Menlo-Regular", size: 18.0)
         }
 
-        selected++
+        selected += 1
     }
     
     
