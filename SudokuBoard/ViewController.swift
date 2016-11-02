@@ -40,8 +40,8 @@ class ViewController: UIViewController {
             boardWidth = view.frame.width
         }
 
-        let hConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
-        let vConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(statusBarSpacing)-[board(\(boardWidth))]", options: [], metrics: nil, views: vflIndex)
+        let hConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[board(\(boardWidth!))]", options: [], metrics: nil, views: vflIndex)
+        let vConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-\(statusBarSpacing!)-[board(\(boardWidth!))]", options: [], metrics: nil, views: vflIndex)
 
         boardConstraints.append(hConstraint)
         boardConstraints.append(vConstraint)
